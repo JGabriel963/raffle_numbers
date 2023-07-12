@@ -1,21 +1,26 @@
 import { FaCirclePlay, FaCirclePause } from "react-icons/fa6";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import audioFile from "../../assets/vinheta.mp3";
+import { VolumeContext } from "../VolumeContext";
 
 export default function Header() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef();
+  const { volume } = useContext(VolumeContext);
 
   const toggleAudio = () => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
       audioRef.current.play();
-      audioRef.current.volume = 0.2;
     }
 
     setIsPlaying(!isPlaying);
   };
+
+  useEffect(() => {
+    audioRef.current.volume = volume;
+  }, [volume]);
 
   return (
     <div className="px-4 h-14 md:h-16 w-full flex flex-row-reverse items-center bg-body-color">

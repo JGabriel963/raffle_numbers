@@ -1,28 +1,34 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
 import tamborAudio from "../../assets/tambor.mp3";
+import { VolumeContext } from "../VolumeContext";
 
 export default function Raffer() {
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(0);
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
   const [result, setResult] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const { setVolume } = useContext(VolumeContext);
 
-  function raffleNumber(e) {
+  const raffleNumber = (e) => {
     e.preventDefault();
 
     setIsLoading(true);
+    setVolume(0.4); // diminui o volume da música principal
 
-    new Audio(tamborAudio).play();
+    new Audio(tamborAudio).play(); // rufem os tambores 😂
+
+    const minNum = parseInt(min);
+    const maxNum = parseInt(max);
+    const randomNumber =
+      Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
 
     setTimeout(() => {
       setIsLoading(false);
-
-      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-
+      setVolume(1);
       setResult(randomNumber);
     }, 4200);
-  }
+  };
 
   return (
     <div className="flex flex-col text-center w-[90%] md:w-[800px] bg-secondary-color px-10 py-10 rounded-xl shadow-xl">
