@@ -13,7 +13,7 @@ A idea deste projeto surgiu, durante um evento na igreja, com a necessidade de t
 ## 👨‍💻 Autores
 
 - [João Gabriel](https://www.github.com/JGabriel963)
-- [Jhon Emerson](https://www.github.com/johnggli)
+- [John Emerson](https://www.github.com/johnggli)
 
 
 ## Funcionalidades
