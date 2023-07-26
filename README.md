@@ -39,7 +39,11 @@ Entre no diretório do projeto
 ```bash
   cd my-project
 ```
+Instale os pacotes 
 
+```bash
+  npm install 
+```
 Inicie o servidor
 
 ```bash
