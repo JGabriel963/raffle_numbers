@@ -43,7 +43,7 @@ Entre no diretório do projeto
 Inicie o servidor
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
 
