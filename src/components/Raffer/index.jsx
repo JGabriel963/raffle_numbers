@@ -8,10 +8,17 @@ export default function Raffer() {
   const [max, setMax] = useState("");
   const [result, setResult] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [raffeNumbers, setRaffeNumbers] = useState([])
+  const [message, setMessage] = useState("")
   const { setVolume } = useContext(VolumeContext);
 
   const raffleNumber = (e) => {
     e.preventDefault();
+
+    if (raffeNumbers.length === +max - +min + 1) {
+      setMessage(":(");
+      return;
+    }
 
     setIsLoading(true);
     setVolume(0.4); // diminui o volume da música principal
@@ -20,14 +27,22 @@ export default function Raffer() {
 
     const minNum = parseInt(min);
     const maxNum = parseInt(max);
-    const randomNumber =
-      Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+
+
+    let randomNumber;
+
+    do {
+      randomNumber = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+    } while (raffeNumbers.includes(randomNumber));
+
+    // add number
+    setRaffeNumbers([...raffeNumbers, randomNumber])
 
     setTimeout(() => {
       setIsLoading(false);
       setVolume(1);
       setResult(randomNumber);
-    }, 4200);
+    }, 420);
   };
 
   return (
@@ -73,7 +88,7 @@ export default function Raffer() {
       </form>
       {!isLoading ? (
         <p className="font-bold text-7xl flex justify-center items-center gap-5">
-          {result < 10 ? `0${result}` : result}
+          {message || (result < 10 ? `0${result}` : result)}
         </p>
       ) : (
         <p className="font-bold text-7xl flex justify-center items-center gap-5">
