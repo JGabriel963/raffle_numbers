@@ -12,7 +12,8 @@ export default {
       'black': '#000',
       'white': "#fff",
       'red': "#dc2626",
-      'body-color': '#121214'
+      'body-color': '#121214',
+      'yellow': '#F5E401'
     },
     fontFamily: {
       'poppins': "Poppins",

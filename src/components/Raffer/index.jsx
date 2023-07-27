@@ -15,8 +15,11 @@ export default function Raffer() {
   const raffleNumber = (e) => {
     e.preventDefault();
 
+    setMessage("")
+
     if (raffeNumbers.length === +max - +min + 1) {
       setMessage(":(");
+      setRaffeNumbers([])
       return;
     }
 
@@ -47,7 +50,7 @@ export default function Raffer() {
 
   return (
     <div className="flex flex-col text-center w-[90%] md:w-[800px] bg-secondary-color px-10 py-10 rounded-xl shadow-xl">
-      <h2 className="font-bold text-3xl mb-10">Premiação</h2>
+      <h2 className="font-bold text-3xl mb-10">Nova <span className="text-yellow">Mente</span></h2>
       <form onSubmit={raffleNumber}>
         <div className="flex gap-8 justify-center mb-8">
           <div className="flex flex-col text-left w-1/2">
