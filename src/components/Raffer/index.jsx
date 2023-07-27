@@ -45,7 +45,7 @@ export default function Raffer() {
       setIsLoading(false);
       setVolume(1);
       setResult(randomNumber);
-    }, 420);
+    }, 4200);
   };
 
   return (
