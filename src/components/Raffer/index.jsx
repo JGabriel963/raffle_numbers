@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
 import tamborAudio from "../../assets/tambor.mp3";
 import { VolumeContext } from "../VolumeContext";
@@ -11,6 +11,12 @@ export default function Raffer() {
   const [raffeNumbers, setRaffeNumbers] = useState([])
   const [message, setMessage] = useState("")
   const { setVolume } = useContext(VolumeContext);
+
+  // Voltar para seus estados iniciais quando forem alterados
+  useEffect(() => {
+    setRaffeNumbers([])
+    setMessage("")
+  }, [min, max])
 
   const raffleNumber = (e) => {
     e.preventDefault();
